@@ -22,9 +22,9 @@ class Knight:
         if chromosome is None:
             chromosome = Chromosome()
         self.chromosome = chromosome
-        self.position = (0, 0)
-        self.fitness = 0
-        self.path = [self.position]
+        self.position = (0, 0)         # actuel position 
+        self.fitness = 0               # number of valid squares visited
+        self.path = [self.position]    # list of visited squares
 
     def move_forward(self, direction):
         """Apply a move: update the position and add it to the path."""
@@ -44,7 +44,7 @@ class Knight:
         x, y = self.position
         on_board = 0 <= x < BOARD_SIZE and 0 <= y < BOARD_SIZE
         not_visited = self.position not in self.path[:-1]
-        return on_board and not_visited
+        return on_board and not_visited     # return true is last move in board size + not vited before
 
     def check_moves(self):
         """Check every move of the chromosome and correct the illegal ones."""
